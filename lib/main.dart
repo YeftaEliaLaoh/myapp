@@ -16,58 +16,82 @@ class Myapp extends StatelessWidget {
       appBar: AppBar(
         title: const Text("My Apps"),
       ),
-      body: SizedBox(
-        height: 100.0,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
-            Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.blue,
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: [
+          Container(
+            margin: const EdgeInsets.all(20.0),
+            alignment: Alignment.center,
+            color: Colors.blue,
+            child: const Text(
+              "1",
+              style: TextStyle(color: Colors.white, fontSize: 30.0),
             ),
-            Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.green,
+          ),
+          Container(
+            margin: const EdgeInsets.all(20.0),
+            alignment: Alignment.center,
+            color: Colors.blue,
+            child: const Text(
+              "2",
+              style: TextStyle(color: Colors.white, fontSize: 30.0),
             ),
-            Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.yellow,
+          ),
+          Container(
+            margin: const EdgeInsets.all(20.0),
+            alignment: Alignment.center,
+            color: Colors.blue,
+            child: const Text(
+              "3",
+              style: TextStyle(color: Colors.white, fontSize: 30.0),
             ),
-            Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.blue,
+          ),
+          Container(
+            margin: const EdgeInsets.all(20.0),
+            alignment: Alignment.center,
+            color: Colors.blue,
+            child: const Text(
+              "4",
+              style: TextStyle(color: Colors.white, fontSize: 30.0),
             ),
-            Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.green,
+          ),
+          Container(
+            margin: const EdgeInsets.all(20.0),
+            alignment: Alignment.center,
+            color: Colors.blue,
+            child: const Text(
+              "5",
+              style: TextStyle(color: Colors.white, fontSize: 30.0),
             ),
-            Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.yellow,
+          ),
+          Container(
+            margin: const EdgeInsets.all(20.0),
+            alignment: Alignment.center,
+            color: Colors.blue,
+            child: const Text(
+              "6",
+              style: TextStyle(color: Colors.white, fontSize: 30.0),
             ),
-            Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.blue,
+          ),
+          Container(
+            margin: const EdgeInsets.all(20.0),
+            alignment: Alignment.center,
+            color: Colors.blue,
+            child: const Text(
+              "7",
+              style: TextStyle(color: Colors.white, fontSize: 30.0),
             ),
-            Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.green,
+          ),
+          Container(
+            margin: const EdgeInsets.all(20.0),
+            alignment: Alignment.center,
+            color: Colors.blue,
+            child: const Text(
+              "8",
+              style: TextStyle(color: Colors.white, fontSize: 30.0),
             ),
-            Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.yellow,
-            ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
