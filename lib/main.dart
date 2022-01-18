@@ -16,39 +16,19 @@ class Myapp extends StatelessWidget {
       appBar: AppBar(
         title: const Text("My Apps"),
       ),
-      body: Row(
-        children: [
-          Container(
-            height: 110.0,
-            color: Colors.blue,
-            padding: const EdgeInsets.all(20.0),
-            child: const Icon(
-              Icons.home,
-              size: 70.0,
-              color: Colors.white,
-            ),
+      body: ListView(
+        children: const [
+          ListTile(
+            leading: Icon(Icons.map),
+            title: Text('Map'),
           ),
-          Expanded(
-            child: Container(
-                height: 110.0,
-                color: Colors.blue[300],
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      "Title",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "Hello world",
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
-                )),
+          ListTile(
+            leading: Icon(Icons.photo_album),
+            title: Text('Album'),
+          ),
+          ListTile(
+            leading: Icon(Icons.phone),
+            title: Text('Phone'),
           ),
         ],
       ),
