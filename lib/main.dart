@@ -33,19 +33,21 @@ class Myapp extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Halaman Utama"),
       ),
-      body: ListView(
-          children: lokasi.map((nama) {
-        return Card(
-          child: Column(
-            children: [
-              Image(
-                image: NetworkImage('${nama['img']}'),
-              ),
-              Text('${nama['kota']}')
-            ],
-          ),
-        );
-      }).toList()),
+      body: ListView.builder(
+        itemCount: lokasi.length,
+        itemBuilder: (context, i) {
+          return Card(
+            child: Column(
+              children: [
+                Image(
+                  image: NetworkImage('${lokasi[i]['img']}'),
+                ),
+                Text('${lokasi[i]['kota']}')
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
