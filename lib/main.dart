@@ -1,4 +1,9 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:flutter/material.dart';
+import 'package:koukicons/home.dart';
+import 'package:koukicons/gift.dart';
+import 'package:koukicons/pin.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -14,11 +19,14 @@ class Halamancarousell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Halaman Utama"),
+        title: const Text("Carousel"),
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Card(child: Text('Hello World!')),
+      body: Column(
+        children: [
+          KoukiconsHome(),
+          KoukiconsGift(height: 100.0),
+          KoukiconsPin(width: 70.0, color: Colors.red),
+        ],
       ),
     );
   }
