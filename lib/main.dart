@@ -7,8 +7,33 @@ void main() {
   ));
 }
 
-class Myapp extends StatelessWidget {
+class Myapp extends StatefulWidget {
   const Myapp({Key? key}) : super(key: key);
+
+  @override
+  _MyappState createState() => _MyappState();
+}
+
+class _MyappState extends State {
+  TextEditingController controllernama = TextEditingController();
+
+  void _kirimdata() {
+    AlertDialog alertDialog = AlertDialog(
+      content: SizedBox(
+        height: 200.0,
+        child: Column(
+          children: [
+            Text("Nama Lengkap : ${controllernama.text}"),
+            ElevatedButton(
+              child: const Text("OK"),
+              onPressed: () => Navigator.pop(context),
+            )
+          ],
+        ),
+      ),
+    );
+    showDialog(builder: (context) => alertDialog, context: context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +45,25 @@ class Myapp extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            const TextField(
+            TextField(
+              controller: controllernama,
               decoration: InputDecoration(
-                  hintText: "Nama User",
-                  labelText: "Nama",
-                  icon: Icon(Icons.people),
-                  border: OutlineInputBorder()),
+                hintText: "Nama User",
+                labelText: "Nama",
+                icon: const Icon(Icons.people),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+              ),
+              keyboardType: const TextInputType.numberWithOptions(),
             ),
-            const TextField(
-              keyboardType: TextInputType.numberWithOptions(),
-            ),
-            const TextField(obscureText: true),
             ElevatedButton(
               child: const Text(
                 "Submit",
                 style: TextStyle(color: Colors.white),
               ),
-              onPressed: () {},
+              onPressed: () {
+                _kirimdata();
+              },
             ),
           ],
         ),
