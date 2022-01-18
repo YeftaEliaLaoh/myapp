@@ -18,12 +18,6 @@ class Myapp extends StatelessWidget {
         ),
         body: Container(
             padding: const EdgeInsets.all(20.0),
-            child: const Center(
-              child: Icon(
-                Icons.home,
-                size: 40.0,
-                color: Colors.blue,
-              ),
-            )));
+            child: Image.asset('image01.jpg')));
   }
 }
