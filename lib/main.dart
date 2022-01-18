@@ -8,18 +8,18 @@ void main() {
   ));
 }
 
+// ignore: must_be_immutable
 class Myapp extends StatelessWidget {
   const Myapp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    var tgl = DateTime.now();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Drawer"),
+        title: const Text("DateTime Flutter"),
       ),
-      drawer: const DrawerApp(),
-      body: const Center(
-        child: Text("hello drawer"),
+      body: Center(
+        child: Text("Tanggal : " + tgl.toString()),
       ),
     );
   }
