@@ -18,7 +18,20 @@ class Halamancarousell extends StatelessWidget {
           title: const Text("Carousel"),
         ),
         body: CarouselSlider(
-          options: CarouselOptions(height: 400.0),
+          options: CarouselOptions(
+            height: 400.0,
+            aspectRatio: 16 / 9,
+            viewportFraction: 0.8,
+            initialPage: 0,
+            enableInfiniteScroll: true,
+            reverse: false,
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            pauseAutoPlayOnTouch: true,
+            enlargeCenterPage: true,
+            scrollDirection: Axis.horizontal,
+          ),
           items: [1, 2, 3, 4, 5].map((i) {
             return Builder(
               builder: (BuildContext context) {
