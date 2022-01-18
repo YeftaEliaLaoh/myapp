@@ -26,7 +26,11 @@ class _MyappState extends State {
         ),
       ),
     );
-    showDialog(builder: (context) => alertDialog, context: context);
+    showDialog(
+      builder: (context) => alertDialog,
+      context: context,
+      barrierDismissible: false,
+    );
   }
 
   @override
