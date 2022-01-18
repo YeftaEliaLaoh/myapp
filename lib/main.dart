@@ -16,11 +16,15 @@ class Halamansafearea extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Halaman SafeArea"),
       ),
-      body: Container(
+      body: SafeArea(
+        child: Container(
         padding: const EdgeInsets.all(10.0),
         child: ListView(
-            children: List.generate(50, (i) => Text("This is Text number $i"))),
+          children: List.generate(50, 
+          (i) => Text("This is Text number $i")
+          )
+        ),
       ),
+      )
     );
   }
-}
