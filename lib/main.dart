@@ -1,6 +1,5 @@
+import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'drawer.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -10,18 +9,51 @@ void main() {
 }
 
 // ignore: must_be_immutable
-class Myapp extends StatelessWidget {
+class Myapp extends StatefulWidget {
   const Myapp({Key? key}) : super(key: key);
+
+  @override
+  HalamanFormState createState() => HalamanFormState();
+}
+
+class HalamanFormState extends State {
+  String jk = "";
+
+  void _pilihjk(String value) {
+    setState(() {
+      jk = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var today = DateTime.now();
-    var formatedTanggal = DateFormat.yMMMd().format(today);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("DateTime Flutter"),
+        title: const Text("Form"),
       ),
-      body: Center(
-        child: Text("Tanggal : " + formatedTanggal.toString()),
+      body: Column(
+        children: [
+          RadioListTile(
+            value: "L",
+            title: const Text("Laki-laki"),
+            groupValue: jk,
+            activeColor: Colors.blue,
+            subtitle: const Text("Pilih salah satu"),
+            onChanged: (String? value) {
+              _pilihjk(value!);
+            },
+          ),
+          RadioListTile(
+            value: "P",
+            title: const Text("Perempuan"),
+            groupValue: jk,
+            onChanged: (String? value) {
+              _pilihjk(value!);
+            },
+            activeColor: Colors.blue,
+            subtitle: const Text("Pilih salah satu"),
+          ),
+        ],
       ),
     );
   }
