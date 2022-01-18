@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import './halamansatu.dart';
-import './halamandua.dart';
-import './halamantiga.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -18,47 +15,33 @@ class Halamannav extends StatefulWidget {
 }
 
 class _HalamannavState extends State {
-  int _selectedIndex = 0;
-
-  final _widgetOptions = [
-    const Halamansatu(),
-    const Halamandua(),
-    const Halamantiga(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.pin_drop),
-            // ignore: deprecated_member_use
-            title: Text('Satu'),
+      appBar: AppBar(
+        title: const Text("Stack"),
+      ),
+      body: Stack(
+        children: [
+          Container(
+            color: Colors.green,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.view_compact),
-            // ignore: deprecated_member_use
-            title: Text('Dua'),
+          Container(
+            color: Colors.red,
+            height: 200.0,
+            width: 200.0,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_books),
-            // ignore: deprecated_member_use
-            title: Text('Tiga'),
-          ),
+          Positioned(
+            right: 50.0,
+            top: 50.0,
+            child: Container(
+              color: Colors.teal,
+              height: 150.0,
+              width: 150.0,
+            ),
+          )
         ],
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        fixedColor: Colors.blueAccent,
-        onTap: _onItemTapped,
       ),
     );
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 }
