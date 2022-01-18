@@ -1,5 +1,7 @@
-import 'dart:core';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
 
 void main() {
   runApp(const MaterialApp(
@@ -13,48 +15,41 @@ class Myapp extends StatefulWidget {
   const Myapp({Key? key}) : super(key: key);
 
   @override
-  HalamanFormState createState() => HalamanFormState();
+  HalamanJson createState() => HalamanJson();
 }
 
-class HalamanFormState extends State {
-  String jk = "";
+class HalamanJson extends State {
+  late List datadariJSON;
 
-  void _pilihjk(String value) {
+  Future ambildata() async {
+    http.Response hasil = await http.get(
+        Uri.parse("https://jsonplaceholder.typicode.com/users"),
+        headers: {"Accept": "application/json"});
+
     setState(() {
-      jk = value;
+      datadariJSON = json.decode(hasil.body);
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ambildata();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Form"),
+        title: const Text("Data JSON"),
       ),
-      body: Column(
-        children: [
-          RadioListTile(
-            value: "L",
-            title: const Text("Laki-laki"),
-            groupValue: jk,
-            activeColor: Colors.blue,
-            subtitle: const Text("Pilih salah satu"),
-            onChanged: (String? value) {
-              _pilihjk(value!);
-            },
-          ),
-          RadioListTile(
-            value: "P",
-            title: const Text("Perempuan"),
-            groupValue: jk,
-            onChanged: (String? value) {
-              _pilihjk(value!);
-            },
-            activeColor: Colors.blue,
-            subtitle: const Text("Pilih salah satu"),
-          ),
-        ],
-      ),
+      body: ListView.builder(
+          itemCount: datadariJSON.length,
+          itemBuilder: (context, i) {
+            return ListTile(
+              title: Text(datadariJSON[i]['name']),
+            );
+          }),
     );
   }
 }
