@@ -1,56 +1,29 @@
 import 'package:flutter/material.dart';
+import './halamankedua.dart';
 
 void main() {
   runApp(const MaterialApp(
-    title: "My Apps",
+    title: "Halaman Utama",
     home: Myapp(),
   ));
 }
 
-class Myapp extends StatefulWidget {
+class Myapp extends StatelessWidget {
   const Myapp({Key? key}) : super(key: key);
-
-  @override
-  _MyappState createState() => _MyappState();
-}
-
-class _MyappState extends State {
-  TextEditingController controllernama = TextEditingController();
-
-  void _tampilkanalert() {
-    AlertDialog alertDialog = const AlertDialog(
-      content: SizedBox(
-        height: 200.0,
-        child: Center(
-          child: Text("Hello Ini Alert"),
-        ),
-      ),
-    );
-    showDialog(
-      builder: (context) => alertDialog,
-      context: context,
-      barrierDismissible: false,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("My Apps"),
+        title: const Text("Halaman Utama"),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(20.0),
-        child: Center(
-          child: ElevatedButton(
-            child: const Text(
-              "Tampilkan",
-              style: TextStyle(color: Colors.white),
-            ),
-            onPressed: () {
-              _tampilkanalert();
-            },
-          ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text("Ke Halaman Kedua"),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => const Halamankedua()));
+          },
         ),
       ),
     );
