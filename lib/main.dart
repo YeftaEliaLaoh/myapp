@@ -16,22 +16,31 @@ class Myapp extends StatelessWidget {
       appBar: AppBar(
         title: const Text("My Apps"),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(20.0),
-        child: Container(
-          width: 300.0,
-          height: 100.0,
-          child: Image.asset(
-            'image01.jpg',
-            width: 300.0,
+      body: Row(
+        children: [
+          Container(
+            color: Colors.blue,
+            padding: const EdgeInsets.all(20.0),
+            child: const Icon(
+              Icons.home,
+              size: 70.0,
+              color: Colors.white,
+            ),
           ),
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: NetworkImage(
-                    'http://code.byriza.com/lib/blog/flutter225.png'),
-                fit: BoxFit.cover),
+          Container(
+            padding: const EdgeInsets.all(20.0),
+            child: const Icon(
+              Icons.people,
+              size: 70.0,
+            ),
           ),
-        ),
+          Container(
+              padding: const EdgeInsets.all(20.0),
+              child: const Icon(
+                Icons.search,
+                size: 70.0,
+              )),
+        ],
       ),
     );
   }
