@@ -1,61 +1,64 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:async';
+import './halamansatu.dart';
+import './halamandua.dart';
+import './halamantiga.dart';
 
 void main() {
   runApp(const MaterialApp(
     title: "Halaman Utama",
-    home: Myapp(),
+    home: Halamannav(),
   ));
 }
 
-// ignore: must_be_immutable
-class Myapp extends StatefulWidget {
-  const Myapp({Key? key}) : super(key: key);
+class Halamannav extends StatefulWidget {
+  const Halamannav({Key? key}) : super(key: key);
 
   @override
-  HalamanJson createState() => HalamanJson();
+  _HalamannavState createState() => _HalamannavState();
 }
 
-class HalamanJson extends State {
-  late List datadariJSON;
+class _HalamannavState extends State {
+  int _selectedIndex = 0;
 
-  Future ambildata() async {
-    http.Response hasil = await http.get(
-        Uri.parse("https://jsonplaceholder.typicode.com/users"),
-        headers: {"Accept": "application/json"});
-
-    setState(() {
-      datadariJSON = json.decode(hasil.body);
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    ambildata();
-  }
+  final _widgetOptions = [
+    const Halamansatu(),
+    const Halamandua(),
+    const Halamantiga(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Data JSON"),
-      ),
-      body: Container(
-        // ignore: unnecessary_null_comparison
-        child: datadariJSON == null
-            ? const Center(child: CircularProgressIndicator())
-            : ListView.builder(
-                // ignore: unnecessary_null_comparison
-                itemCount: datadariJSON == null ? 0 : datadariJSON.length,
-                itemBuilder: (context, i) {
-                  return ListTile(
-                    title: Text(datadariJSON[i]['name']),
-                  );
-                }),
+      body: _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pin_drop),
+            // ignore: deprecated_member_use
+            title: Text('Satu'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.view_compact),
+            // ignore: deprecated_member_use
+            title: Text('Dua'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.library_books),
+            // ignore: deprecated_member_use
+            title: Text('Tiga'),
+          ),
+        ],
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _selectedIndex,
+        fixedColor: Colors.blueAccent,
+        onTap: _onItemTapped,
       ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }
