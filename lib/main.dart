@@ -32,16 +32,18 @@ class Halamancarousell extends StatelessWidget {
             enlargeCenterPage: true,
             scrollDirection: Axis.horizontal,
           ),
-          items: [1, 2, 3, 4, 5].map((i) {
+          items: [
+            "https://via.placeholder.com/400/0000FF/808080",
+            "https://via.placeholder.com/400/FF0000/FFFFFF",
+            "https://via.placeholder.com/400/FFFF00/000000",
+          ].map((i) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: const BoxDecoration(color: Colors.amber),
-                    child: Text(
-                      'text $i',
-                      style: const TextStyle(fontSize: 16.0),
+                    child: Image(
+                      image: NetworkImage(i),
                     ));
               },
             );
