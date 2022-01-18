@@ -18,6 +18,14 @@ class Myapp extends StatelessWidget {
         ),
         body: Container(
             padding: const EdgeInsets.all(20.0),
-            child: Image.asset('image01.jpg')));
+            child: Container(
+                alignment: const Alignment(0, 0),
+                width: 300.0,
+                height: 100.0,
+                color: Colors.blue,
+                child: Image.asset(
+                  'image01.jpg',
+                  width: 300.0,
+                ))));
   }
 }
