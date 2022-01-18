@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'drawer.dart';
 
 void main() {
@@ -13,13 +14,14 @@ class Myapp extends StatelessWidget {
   const Myapp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var tgl = DateTime.now();
+    var today = DateTime.now();
+    var formatedTanggal = DateFormat.yMMMd().format(today);
     return Scaffold(
       appBar: AppBar(
         title: const Text("DateTime Flutter"),
       ),
       body: Center(
-        child: Text("Tanggal : " + tgl.toString()),
+        child: Text("Tanggal : " + formatedTanggal.toString()),
       ),
     );
   }
