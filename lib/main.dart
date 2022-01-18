@@ -19,12 +19,10 @@ class Myapp extends StatelessWidget {
         body: Container(
             padding: const EdgeInsets.all(20.0),
             child: const Center(
-              child: Text(
-                "Hello World",
-                style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold),
+              child: Icon(
+                Icons.home,
+                size: 40.0,
+                color: Colors.blue,
               ),
             )));
   }
