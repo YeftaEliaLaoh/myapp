@@ -1,7 +1,5 @@
-// ignore_for_file: import_of_legacy_library_into_null_safe
-
 import 'package:flutter/material.dart';
-import 'package:badges/badges.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -19,17 +17,7 @@ class Halamanhalaman extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Halaman"),
       ),
-      body: Badge(
-        badgeColor: Colors.deepPurple,
-        shape: BadgeShape.square,
-        borderRadius: BorderRadius.circular(10),
-        toAnimate: false,
-        badgeContent: const Text(
-          "OPEN",
-          style: TextStyle(
-              fontSize: 10.0, fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-      ),
+      body: const Icon(FontAwesomeIcons.gamepad),
     );
   }
 }
