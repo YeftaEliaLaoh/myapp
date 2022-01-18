@@ -43,13 +43,19 @@ class HalamanJson extends State {
       appBar: AppBar(
         title: const Text("Data JSON"),
       ),
-      body: ListView.builder(
-          itemCount: datadariJSON.length,
-          itemBuilder: (context, i) {
-            return ListTile(
-              title: Text(datadariJSON[i]['name']),
-            );
-          }),
+      body: Container(
+        // ignore: unnecessary_null_comparison
+        child: datadariJSON == null
+            ? const Center(child: CircularProgressIndicator())
+            : ListView.builder(
+                // ignore: unnecessary_null_comparison
+                itemCount: datadariJSON == null ? 0 : datadariJSON.length,
+                itemBuilder: (context, i) {
+                  return ListTile(
+                    title: Text(datadariJSON[i]['name']),
+                  );
+                }),
+      ),
     );
   }
 }
