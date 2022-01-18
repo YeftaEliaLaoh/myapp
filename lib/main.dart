@@ -1,46 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:division/division.dart';
 
 void main() {
   runApp(const MaterialApp(
     title: "Halaman Utama",
-    home: Halamannav(),
+    home: Halamandivision(),
   ));
 }
 
-class Halamannav extends StatefulWidget {
-  const Halamannav({Key? key}) : super(key: key);
+class Halamandivision extends StatelessWidget {
+  const Halamandivision({Key? key}) : super(key: key);
 
-  @override
-  _HalamannavState createState() => _HalamannavState();
-}
-
-class _HalamannavState extends State {
   @override
   Widget build(BuildContext context) {
+    ParentStyle cardStyle = ParentStyle()
+      ..height(100.0)
+      ..width(500.0)
+      ..minWidth(500.0)
+      ..alignment.center()
+      ..alignmentContent.center()
+      ..padding(vertical: 20.0, horizontal: 10.0)
+      ..margin(horizontal: 30.0)
+      ..background.color(hex('55ffff'))
+      ..borderRadius(all: 20.0)
+      ..boxShadow(
+          color: hex('55ffff'),
+          spread: -10.0,
+          blur: 20.0,
+          offset: const Offset(0.0, 15.0));
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Stack"),
+        title: const Text("Division"),
       ),
-      body: Stack(
-        children: [
-          Container(
-            color: Colors.green,
-          ),
-          Container(
-            color: Colors.red,
-            height: 200.0,
-            width: 200.0,
-          ),
-          Positioned(
-            right: 50.0,
-            top: 50.0,
-            child: Container(
-              color: Colors.teal,
-              height: 150.0,
-              width: 150.0,
-            ),
-          )
-        ],
+      body: Parent(
+        style: cardStyle,
+        gesture: Gestures()
+          // ignore: avoid_print
+          ..onTap(() => print('Division widget pressed!')),
+        child: const Text('Centered text inside the division widget'),
       ),
     );
   }
