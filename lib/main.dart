@@ -17,18 +17,12 @@ class Myapp extends StatefulWidget {
 class _MyappState extends State {
   TextEditingController controllernama = TextEditingController();
 
-  void _kirimdata() {
-    AlertDialog alertDialog = AlertDialog(
+  void _tampilkanalert() {
+    AlertDialog alertDialog = const AlertDialog(
       content: SizedBox(
         height: 200.0,
-        child: Column(
-          children: [
-            Text("Nama Lengkap : ${controllernama.text}"),
-            ElevatedButton(
-              child: const Text("OK"),
-              onPressed: () => Navigator.pop(context),
-            )
-          ],
+        child: Center(
+          child: Text("Hello Ini Alert"),
         ),
       ),
     );
@@ -43,29 +37,16 @@ class _MyappState extends State {
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: controllernama,
-              decoration: InputDecoration(
-                hintText: "Nama User",
-                labelText: "Nama",
-                icon: const Icon(Icons.people),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-              ),
-              keyboardType: const TextInputType.numberWithOptions(),
+        child: Center(
+          child: ElevatedButton(
+            child: const Text(
+              "Tampilkan",
+              style: TextStyle(color: Colors.white),
             ),
-            ElevatedButton(
-              child: const Text(
-                "Submit",
-                style: TextStyle(color: Colors.white),
-              ),
-              onPressed: () {
-                _kirimdata();
-              },
-            ),
-          ],
+            onPressed: () {
+              _tampilkanalert();
+            },
+          ),
         ),
       ),
     );
