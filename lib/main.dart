@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './halamankedua.dart';
+import './halamanlain.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -17,13 +17,55 @@ class Myapp extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Halaman Utama"),
       ),
-      body: Center(
-        child: ElevatedButton(
-          child: const Text("Ke Halaman Kedua"),
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => const Halamankedua()));
-          },
+      body: Container(
+        padding: const EdgeInsets.all(10.0),
+        child: ListView(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Route route = MaterialPageRoute(
+                    builder: (context) => const Halamanlain());
+                Navigator.push(context, route);
+              },
+              child: Card(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Image(
+                      image: NetworkImage(
+                          "https://www.w3schools.com/w3css/img_lights.jpg"),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10.0),
+                      child: const Text("Flutter Tutorial 01"),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Route route = MaterialPageRoute(
+                    builder: (context) => const Halamanlain());
+                Navigator.push(context, route);
+              },
+              child: Card(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Image(
+                      image: NetworkImage(
+                          "https://www.w3schools.com/w3css/img_lights.jpg"),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10.0),
+                      child: const Text("Flutter Tutorial 02"),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
