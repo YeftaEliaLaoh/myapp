@@ -19,6 +19,7 @@ class Myapp extends StatelessWidget {
       body: Row(
         children: [
           Container(
+            height: 110.0,
             color: Colors.blue,
             padding: const EdgeInsets.all(20.0),
             child: const Icon(
@@ -27,19 +28,28 @@ class Myapp extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          Container(
-            padding: const EdgeInsets.all(20.0),
-            child: const Icon(
-              Icons.people,
-              size: 70.0,
-            ),
+          Expanded(
+            child: Container(
+                height: 110.0,
+                color: Colors.blue[300],
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "Title",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Hello world",
+                      style: TextStyle(color: Colors.white),
+                    )
+                  ],
+                )),
           ),
-          Container(
-              padding: const EdgeInsets.all(20.0),
-              child: const Icon(
-                Icons.search,
-                size: 70.0,
-              )),
         ],
       ),
     );
