@@ -22,4 +22,26 @@ class UserViewModel {
       return null;
     }
   }
+
+  Future postUser(body) async {
+    try {
+      http.Response hasil = await http.post(
+          Uri.parse("http://byriza.com/webapi/create.php"),
+          body: body,
+          headers: {
+            "Accept": "application/json",
+          });
+      if (hasil.statusCode == 200) {
+        print("status 200");
+        // final data = json.decode(hasil.body);
+        return true;
+      } else {
+        print("error status " + hasil.statusCode.toString());
+        return null;
+      }
+    } catch (e) {
+      print("error catchnya $e");
+      return null;
+    }
+  }
 }
