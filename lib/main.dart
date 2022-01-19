@@ -4,24 +4,30 @@ import 'package:flutter/cupertino.dart';
 void main() {
   runApp(const CupertinoApp(
     title: "My Apps",
-    home: Myapp(),
+    home: MyStatelessWidget(),
   ));
 }
 
-class Myapp extends StatelessWidget {
-  const Myapp({Key? key}) : super(key: key);
+class MyStatelessWidget extends StatelessWidget {
+  const MyStatelessWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-        resizeToAvoidBottomInset: true,
-        navigationBar: const CupertinoNavigationBar(
-          middle: Text("IOS Style"),
-        ),
-        child: Container(
-            padding: const EdgeInsets.all(20.0),
-            child: const Center(
-              child: Text("Hello World", style: TextStyle(color: Colors.white)),
-            )));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Floating Action Button Label'),
+      ),
+      body: const Center(
+        child: Text('Press the button with a label below!'),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        label: const Text('Approve'),
+        icon: const Icon(Icons.thumb_up),
+        backgroundColor: Colors.pink,
+      ),
+    );
   }
 }
