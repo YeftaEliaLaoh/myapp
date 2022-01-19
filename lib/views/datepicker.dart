@@ -36,11 +36,25 @@ class _DatePickerPageState extends State {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(tgl.toString()),
-            ElevatedButton(
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.red,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: const EdgeInsets.all(10.0),
+              ),
               onPressed: () {
                 pilihTanggal(context);
               },
-              child: const Text("Date Picker"),
+              icon: const Icon(
+                Icons.camera_alt,
+                color: Colors.white,
+              ),
+              label: const Text(
+                "Kamera",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
