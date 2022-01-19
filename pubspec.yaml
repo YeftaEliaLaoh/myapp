@@ -46,6 +46,7 @@ dependencies:
   progress_dialog: ^1.2.4
   image_picker: ^0.8.4+4
   flutter_html: ^2.2.1
+  from_css_color: ^2.0.0
 
 
 dev_dependencies:

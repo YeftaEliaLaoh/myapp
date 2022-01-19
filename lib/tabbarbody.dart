@@ -1,89 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:from_css_color/from_css_color.dart';
 
-class TabbarBody extends StatefulWidget {
-  const TabbarBody({Key? key}) : super(key: key);
+class Halaman extends StatelessWidget {
+  const Halaman({Key? key}) : super(key: key);
 
-  @override
-  _TabbarBodyState createState() => _TabbarBodyState();
-}
-
-class _TabbarBodyState extends State {
   @override
   Widget build(BuildContext context) {
+    var checkCorrectHex = isCssColor('#fbafba'); // true
+    var checkIncorrectHex = isCssColor('#f'); // false
+
+    var checkCorrectRgb = isCssColor('rgb(100, 5, 32)'); // true
+    var checkIncorrectRgb = isCssColor('rgb(100,100)'); // false
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Tabbar Body"),
+        title: const Text("DateTime Flutter"),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                children: [
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100.0),
-                      image: const DecorationImage(
-                        image: NetworkImage(
-                            'https://www.byriza.com/lib/blog/1586938494.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20.0,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text("Username"),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text("follow"),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            DefaultTabController(
-              length: 3,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const TabBar(
-                    labelColor: Colors.black,
-                    tabs: [
-                      Tab(text: 'Tab 1'),
-                      Tab(text: 'Tab 2'),
-                      Tab(text: 'Tab 3'),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: const TabBarView(
-                      children: [
-                        Center(
-                          child: Text("Tab 1"),
-                        ),
-                        Center(
-                          child: Text("Tab 2"),
-                        ),
-                        Center(
-                          child: Text("Tab 3"),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+      body: Center(
+        child: Text("checkCorrectHex : " +
+            checkCorrectHex.toString() +
+            " checkIncorrectHex : " +
+            checkIncorrectHex.toString() +
+            " checkCorrectRgb : " +
+            checkCorrectRgb.toString() +
+            " checkIncorrectRgb : " +
+            checkIncorrectRgb.toString()),
       ),
     );
   }
