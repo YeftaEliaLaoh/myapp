@@ -5,13 +5,30 @@ class Halaman extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String tulisan = "Single quotes in double quotes".substring(3, 10);
+    String? _selectedoption = 'Pilihan 1';
 
     return Scaffold(
       appBar: AppBar(
         title: const Text("DateTime Flutter"),
       ),
-      body: Center(child: Text("hasil : " + tulisan)),
+      body: DropdownButton<String>(
+        value: _selectedoption,
+        icon: const Icon(Icons.arrow_downward),
+        iconSize: 24,
+        elevation: 16,
+        items: <String>['Pilihan 1', 'Pilihan 2', 'Pilihan 3', 'Pilihan 4']
+            .map((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+        onChanged: (val) {
+          setState(() {
+            _selectedoption = val;
+          });
+        },
+      ),
     );
   }
 }
