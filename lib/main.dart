@@ -1,47 +1,49 @@
-import 'dart:async';
-import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  _MyAppState createState() => _MyAppState();
+void main() {
+  runApp(const MaterialApp(
+    title: "Family Dex",
+    home: Halaman(),
+  ));
 }
 
-class _MyAppState extends State {
-  var jam = '';
-  void startJam() {
-    Timer.periodic(const Duration(seconds: 1), (_) {
-      var tgl = DateTime.now();
-      var formatedjam = DateFormat.Hms().format(tgl);
-      setState(() {
-        jam = formatedjam;
-      });
-    });
-  }
-
-  @override
-  void initState() {
-    startJam();
-    super.initState();
-  }
+class Halaman extends StatelessWidget {
+  const Halaman({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Clock example app'),
-        ),
-        body: Center(
-          child: Text(
-            jam,
-            style: const TextStyle(fontSize: 40),
-          ),
+    ProgressDialog pr =
+        ProgressDialog(context, type: ProgressDialogType.Normal);
+
+    pr.style(
+      message: 'Menunggu...',
+      borderRadius: 10.0,
+      backgroundColor: Colors.white,
+      elevation: 10.0,
+      insetAnimCurve: Curves.easeInOut,
+      progress: 0.0,
+      maxProgress: 100.0,
+      progressTextStyle: const TextStyle(
+          color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
+      messageTextStyle: const TextStyle(
+          color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600),
+    );
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Progress Dialog"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text("Tampilkan"),
+          onPressed: () {
+            pr.show();
+
+            Future.delayed(const Duration(seconds: 10)).then((onValue) {
+              pr.hide();
+            });
+          },
         ),
       ),
     );
