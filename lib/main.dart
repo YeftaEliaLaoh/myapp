@@ -1,48 +1,47 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
+import 'package:image_picker/image_picker.dart';
 
 void main() {
   runApp(const MaterialApp(
     title: "My Apps",
-    home: MyApp(),
+    home: Myapp(),
   ));
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Myapp extends StatefulWidget {
+  const Myapp({Key? key}) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState();
+  _MyappState createState() => _MyappState();
 }
 
-class _MyAppState extends State {
-  bool _isLoading = true;
-  PDFDocument document;
+class _MyappState extends State {
+  late File? _image;
 
-  @override
-  void initState() {
-    super.initState();
-    loadDocument();
-  }
+  Future getImage() async {
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
 
-  loadDocument() async {
-    document =
-        await PDFDocument.fromURL("https://www.byriza.com/demo/file-PDF.pdf");
-    setState(() => _isLoading = false);
+    setState(() {
+      _image = image as File;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('PDF Viewer'),
-        ),
-        body: Center(
-            child: _isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : PDFViewer(document: document)),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Image Picker Example'),
+      ),
+      body: Center(
+        child: _image == null
+            ? const Text('No image selected.')
+            : Image.file(_image!),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: getImage,
+        tooltip: 'Pick Image',
+        child: const Icon(Icons.add_a_photo),
       ),
     );
   }
