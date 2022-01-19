@@ -1,30 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
-void main() {
-  runApp(const MaterialApp(
-    title: "My Apps",
-    home: Myapp(),
-  ));
+void main() => runApp(const MyApp());
+
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
 }
 
-class Myapp extends StatelessWidget {
-  const Myapp({Key? key}) : super(key: key);
+class _MyAppState extends State {
+  void share(BuildContext context) {
+    var url = "https://www.ets.org/toefl";
+    RenderBox box = context.findRenderObject() as RenderBox;
+
+    Share.share(url,
+        subject: "Website",
+        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Flutter App"),
-      ),
-      body: Center(
-        child: Container(
-          height: 200.0,
-          width: 200.0,
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: const Text('Plugin example app'),
           ),
-        ),
-      ),
+          body: Center(
+              child: ElevatedButton(
+            child: const Text("Share"),
+            onPressed: () {
+              share(context);
+            },
+          ))),
     );
   }
 }
