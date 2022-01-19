@@ -14,6 +14,6 @@ void main() {
     ],
     debugShowCheckedModeBanner: false,
     title: "My App",
-    home: DatePickerPage(),
+    home: Halaman(),
   ));
 }

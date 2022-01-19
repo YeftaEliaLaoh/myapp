@@ -1,64 +1,17 @@
 import 'package:flutter/material.dart';
 
-class DatePickerPage extends StatefulWidget {
-  const DatePickerPage({Key? key}) : super(key: key);
-
-  @override
-  _DatePickerPageState createState() => _DatePickerPageState();
-}
-
-class _DatePickerPageState extends State {
-  DateTime tgl = DateTime.now();
-
-  pilihTanggal(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: tgl, // Refer step 1
-      firstDate: DateTime(2000),
-      lastDate: DateTime(3000),
-    );
-    if (picked != null && picked != tgl) {
-      setState(() {
-        tgl = picked;
-      });
-    }
-  }
+class Halaman extends StatelessWidget {
+  const Halaman({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String kalimat = "Belajar Mobile-App Flutter hari ini pukul 08:10";
+    var hasil = kalimat.split(' ');
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tanggal'),
+        title: const Text("DateTime Flutter"),
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(tgl.toString()),
-            ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.red,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                padding: const EdgeInsets.all(10.0),
-              ),
-              onPressed: () {
-                pilihTanggal(context);
-              },
-              icon: const Icon(
-                Icons.camera_alt,
-                color: Colors.white,
-              ),
-              label: const Text(
-                "Kamera",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: Center(child: Text("hasil : " + hasil[6])),
     );
   }
 }
