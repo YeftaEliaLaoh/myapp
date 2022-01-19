@@ -9,43 +9,37 @@ void main() {
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
   @override
-  _ContohappbarState createState() => _ContohappbarState();
+  _ContohFormState createState() => _ContohFormState();
 }
 
-class _ContohappbarState extends State {
+class _ContohFormState extends State {
+  final GlobalKey _formKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.green,
-          elevation: 0.0,
-          iconTheme: const IconThemeData(
-            color: Colors.lightBlue, //change your color here
+        title: const Text("Contoh Form"),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(10.0),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Textfield wajib diisi bro';
+                  }
+                  return null;
+                },
+              ),
+            ],
           ),
-          leading: IconButton(
-            icon: const Icon(Icons.supervised_user_circle),
-            onPressed: () {},
-          ),
-          title: const Text("Ini AppBar"),
-          actions: [
-            // action button
-            IconButton(
-              icon: const Icon(Icons.add_circle),
-              onPressed: () {
-                //action
-              },
-            ),
-            // action button
-            IconButton(
-              icon: const Icon(Icons.add_location),
-              onPressed: () {
-                //action
-              },
-            ),
-          ]),
-      body: const Center(
-        child: Text("ini body"),
+        ),
       ),
     );
   }
