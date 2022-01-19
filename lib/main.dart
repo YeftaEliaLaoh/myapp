@@ -1,18 +1,10 @@
-import 'tabbarbody.dart';
+import 'package:myapp/views/datepicker.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
     title: "My App",
-    home: MyApp(),
+    home: DatePickerPage(),
   ));
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(title: 'MY App', home: HalamanDate());
-  }
 }
