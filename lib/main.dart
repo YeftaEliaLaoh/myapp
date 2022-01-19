@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:expandable/expandable.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,32 +10,38 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State {
+  final GlobalKey scaffoldState = GlobalKey();
+
+  void showSnakeBar(scaffoldState, String _pesan) {
+    scaffoldState.currentState.showSnackBar(
+      SnackBar(
+        content: Text(_pesan),
+        action: SnackBarAction(
+          label: 'Close',
+          onPressed: () {
+            // Some code to undo the change.
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        key: scaffoldState,
         appBar: AppBar(
-          title: const Text('Border example app'),
+          title: const Text('Snackbar example app'),
         ),
         body: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: ExpandablePanel(
-            header: const Text(
-              "Contoh by Test",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-            ),
-            collapsed: const Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse augue arcu,',
-              softWrap: true,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            expanded: const Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse augue arcu, dapibus vel porta id, ultrices quis leo. Cras id quam quis neque mattis viverra ac eget ante. Etiam fringilla eget enim eget lacinia.',
-              softWrap: true,
-            ),
-          ),
-        ),
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              onPressed: () {
+                showSnakeBar(scaffoldState, 'Muncul Snackbar');
+              },
+              child: const Text("Tampilkan"),
+            )),
       ),
     );
   }
