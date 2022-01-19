@@ -128,7 +128,7 @@ packages:
     source: hosted
     version: "6.1.2"
   flutter:
-    dependency: "direct main"
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -154,7 +154,7 @@ packages:
     source: hosted
     version: "1.0.4"
   flutter_localizations:
-    dependency: transitive
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
