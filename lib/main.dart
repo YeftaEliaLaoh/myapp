@@ -1,47 +1,64 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 void main() {
   runApp(const MaterialApp(
     title: "My Apps",
-    home: Myapp(),
+    home: HalamanUtama(),
   ));
 }
 
-class Myapp extends StatefulWidget {
-  const Myapp({Key? key}) : super(key: key);
+class HalamanUtama extends StatefulWidget {
+  const HalamanUtama({Key? key}) : super(key: key);
 
   @override
-  _MyappState createState() => _MyappState();
+  _HalamanUtamaState createState() => _HalamanUtamaState();
 }
 
-class _MyappState extends State {
-  late File? _image;
-
-  Future getImage() async {
-    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
-
-    setState(() {
-      _image = image as File;
-    });
-  }
-
+class _HalamanUtamaState extends State {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Image Picker Example'),
+        title: const Text("Halaman Utama"),
       ),
-      body: Center(
-        child: _image == null
-            ? const Text('No image selected.')
-            : Image.file(_image!),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: getImage,
-        tooltip: 'Pick Image',
-        child: const Icon(Icons.add_a_photo),
+      body: Html(
+        data: """
+        
+
+          
+Demo Page
+
+          
+This is a fantastic product that you should buy!
+
+
+          
+Features
+
+          
+
+            
+It actually works
+
+            
+It exists
+
+            
+It doesn't cost much!
+
+          
+
+          <!--You can pretty much put any html in here!-->
+          
+Hello world, 
+
+Melanjutkan pembahasan mengenai form sebelumnya yang sudah terlalu lama belum ada kelanjutannya kali ini saya membuat artikel mengenai bagaimana mengambil atau menambahkan gambar dari handphone ke aplikasi kita menggunakan image picker. Kita bisa mengambil gambar dari galeri ataupun dari kamera. Fungsinya biasanya ketika kita membuat sebuah form yang berisi inputan data yang mengharuskan pengguna mengupload foto untuk kelengkapan data.
+
+
+        
+
+      """,
       ),
     );
   }
