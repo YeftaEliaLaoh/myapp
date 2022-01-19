@@ -5,14 +5,13 @@ class Halaman extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String kalimat =
-        "Belajar Mobile-App Flutter hari ini pukul 08:10".replaceAll('e', 'x');
+    String tulisan = "Single quotes in double quotes".substring(3, 10);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text("DateTime Flutter"),
       ),
-      body: Center(child: Text("hasil : " + kalimat)),
+      body: Center(child: Text("hasil : " + tulisan)),
     );
   }
 }
