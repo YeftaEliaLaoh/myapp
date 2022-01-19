@@ -1,30 +1,57 @@
-import 'package:flutter/material.dart';
-import 'package:from_css_color/from_css_color.dart';
+// ignore_for_file: avoid_print
 
-class Halaman extends StatelessWidget {
-  const Halaman({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:month_picker_dialog/month_picker_dialog.dart';
+
+class HalamanDate extends StatefulWidget {
+  const HalamanDate({Key? key}) : super(key: key);
+
+  @override
+  _HalamanDateState createState() => _HalamanDateState();
+}
+
+class _HalamanDateState extends State {
+  DateTime selectedDate = DateTime.now();
+  _selectMonth(BuildContext context) async {
+    showMonthPicker(
+      context: context,
+      firstDate: DateTime(DateTime.now().year - 1, 5),
+      lastDate: DateTime(DateTime.now().year + 1, 9),
+      initialDate: selectedDate,
+      locale: const Locale("id"),
+    ).then((date) {
+      if (date != null) {
+        setState(() {
+          selectedDate = date;
+          print(selectedDate);
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    var checkCorrectHex = isCssColor('#fbafba'); // true
-    var checkIncorrectHex = isCssColor('#f'); // false
-
-    var checkCorrectRgb = isCssColor('rgb(100, 5, 32)'); // true
-    var checkIncorrectRgb = isCssColor('rgb(100,100)'); // false
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text("DateTime Flutter"),
+        title: const Text("Halaman Datepicker"),
       ),
-      body: Center(
-        child: Text("checkCorrectHex : " +
-            checkCorrectHex.toString() +
-            " checkIncorrectHex : " +
-            checkIncorrectHex.toString() +
-            " checkCorrectRgb : " +
-            checkCorrectRgb.toString() +
-            " checkIncorrectRgb : " +
-            checkIncorrectRgb.toString()),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              selectedDate.toString(),
+              style: const TextStyle(fontSize: 20.0),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              _selectMonth(context);
+            },
+            child: const Text('Pilih Tanggal'),
+          )
+        ],
       ),
     );
   }

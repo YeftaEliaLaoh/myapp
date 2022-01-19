@@ -13,6 +13,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'MY App', home: Halaman());
+    return const MaterialApp(title: 'MY App', home: HalamanDate());
   }
 }
