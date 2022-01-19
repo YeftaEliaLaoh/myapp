@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison
-
 import '../viewmodels/userviewmodel.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +38,7 @@ class _HalamanUtamaState extends State {
               itemCount: dataUser.length,
               itemBuilder: (context, i) {
                 return ListTile(
-                  title: Text(dataUser[i].name),
+                  title: Text(dataUser[i].namaUser),
                 );
               },
             ),

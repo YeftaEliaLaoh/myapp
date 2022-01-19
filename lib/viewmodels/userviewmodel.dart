@@ -7,7 +7,7 @@ class UserViewModel {
   Future<List?> getUsers() async {
     try {
       http.Response hasil = await http.get(
-          Uri.parse("https://jsonplaceholder.typicode.com/users"),
+          Uri.parse("http://byriza.com/webapi/read.php"),
           headers: {"Accept": "application/json"});
       if (hasil.statusCode == 200) {
         print("data category success");
