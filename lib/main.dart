@@ -2,42 +2,26 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MaterialApp(
-    title: "My Carousell",
-    home: MyApp(),
+    title: "My Apps",
+    home: Myapp(),
   ));
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  _ContohFormState createState() => _ContohFormState();
-}
-
-class _ContohFormState extends State {
-  final GlobalKey _formKey = GlobalKey();
+class Myapp extends StatelessWidget {
+  const Myapp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Contoh Form"),
+        title: const Text("Flutter App"),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(10.0),
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            children: [
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Textfield wajib diisi bro';
-                  }
-                  return null;
-                },
-              ),
-            ],
+      body: Center(
+        child: Container(
+          height: 200.0,
+          width: 200.0,
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
           ),
         ),
       ),
