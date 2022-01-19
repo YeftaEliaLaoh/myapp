@@ -1,11 +1,6 @@
-import 'dart:async';
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
-import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -22,49 +17,33 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State {
-  String pathPDF = "";
-  String filePDF = "https://www.byriza.com/demo/file-PDF.pdf";
+  bool _isLoading = true;
+  PDFDocument document;
 
   @override
   void initState() {
     super.initState();
-    createFileOfPdfUrl(filePDF).then((f) {
-      setState(() {
-        pathPDF = f.path;
-        // ignore: avoid_print
-        print(pathPDF);
-      });
-    });
+    loadDocument();
   }
 
-  Future createFileOfPdfUrl(filePDF) async {
-    final url = filePDF;
-    final filename = url.substring(url.lastIndexOf("/") + 1);
-    var request = await HttpClient().getUrl(Uri.parse(url));
-    var response = await request.close();
-    var bytes = await consolidateHttpClientResponseBytes(response);
-    String dir = (await getApplicationDocumentsDirectory()).path;
-    File file = File('$dir/$filename');
-    await file.writeAsBytes(bytes);
-    return file;
+  loadDocument() async {
+    document =
+        await PDFDocument.fromURL("https://www.byriza.com/demo/file-PDF.pdf");
+    setState(() => _isLoading = false);
   }
 
   @override
   Widget build(BuildContext context) {
-    return pathPDF == ""
-        ? Scaffold(
-            appBar: AppBar(
-              title: const Text("Document"),
-            ),
-            body: const Center(
-              child: CircularProgressIndicator(),
-            ),
-          )
-        : PDFViewerScaffold(
-            appBar: AppBar(
-              title: const Text("Document"),
-            ),
-            path: pathPDF,
-          );
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('PDF Viewer'),
+        ),
+        body: Center(
+            child: _isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : PDFViewer(document: document)),
+      ),
+    );
   }
 }
