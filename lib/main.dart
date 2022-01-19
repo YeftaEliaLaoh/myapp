@@ -7,49 +7,50 @@ void main() {
   ));
 }
 
-class Halaman extends StatefulWidget {
+class Halaman extends StatelessWidget {
   const Halaman({Key? key}) : super(key: key);
-
-  @override
-  _HalamanState createState() => _HalamanState();
-}
-
-class _HalamanState extends State with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(vsync: this, length: 3);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: const [
-            Tab(icon: Icon(Icons.access_time), text: 'Tab 1'),
-            Tab(icon: Icon(Icons.access_alarms), text: 'Tab 2'),
-            Tab(icon: Icon(Icons.account_circle), text: 'Tab 3'),
+        title: const Text('Halaman Demo'),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(10.0),
+        child: ListView(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              child: const Text("List 1"),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              child: const Text("List 2"),
+            ),
+            ListView(
+              shrinkWrap: true,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10.0),
+                  child: const Text("List 2.1"),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10.0),
+                  child: const Text("List 2.2"),
+                ),
+              ],
+            ),
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              child: const Text("List 3"),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              child: const Text("List 4"),
+            ),
           ],
         ),
-        title: const Text('Tabbar'),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: const [
-          Center(child: Text('Ini Tab 1')),
-          Center(child: Text('Ini Tab 2')),
-          Center(child: Text('Ini Tab 3')),
-        ],
       ),
     );
   }
