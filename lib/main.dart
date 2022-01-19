@@ -1,29 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:progress_dialog/progress_dialog.dart';
 
 void main() {
   runApp(const MaterialApp(
     title: "Family Dex",
-    home: Halaman(),
+    home: TabBarDemo(),
   ));
 }
 
-class Halaman extends StatelessWidget {
-  const Halaman({Key? key}) : super(key: key);
+class TabBarDemo extends StatelessWidget {
+  const TabBarDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Progress Dialog"),
-      ),
-      body: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Image.asset(
-          "image01.jpg",
-          height: 200,
-          width: 200,
-          fit: BoxFit.cover,
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.access_time), text: 'Tab 1'),
+                Tab(icon: Icon(Icons.access_alarms), text: 'Tab 2'),
+                Tab(icon: Icon(Icons.account_circle), text: 'Tab 3'),
+              ],
+            ),
+            title: const Text('Tabbar'),
+          ),
+          body: const TabBarView(
+            children: [
+              Center(child: Text('Ini Tab 1')),
+              Center(child: Text('Ini Tab 2')),
+              Center(child: Text('Ini Tab 3')),
+            ],
+          ),
         ),
       ),
     );
