@@ -21,7 +21,7 @@ class Halaman extends StatelessWidget {
         width: 200,
         height: 200,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30.0),
+          borderRadius: BorderRadius.circular(100.0),
           image: const DecorationImage(
             image: AssetImage('image01.jpg'),
             fit: BoxFit.cover,
