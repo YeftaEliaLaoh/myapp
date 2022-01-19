@@ -1,4 +1,7 @@
+import 'dart:async';
+import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,38 +13,36 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State {
-  final GlobalKey scaffoldState = GlobalKey();
+  var jam = '';
+  void startJam() {
+    Timer.periodic(const Duration(seconds: 1), (_) {
+      var tgl = DateTime.now();
+      var formatedjam = DateFormat.Hms().format(tgl);
+      setState(() {
+        jam = formatedjam;
+      });
+    });
+  }
 
-  void showSnakeBar(scaffoldState, String _pesan) {
-    scaffoldState.currentState.showSnackBar(
-      SnackBar(
-        content: Text(_pesan),
-        action: SnackBarAction(
-          label: 'Close',
-          onPressed: () {
-            // Some code to undo the change.
-          },
-        ),
-      ),
-    );
+  @override
+  void initState() {
+    startJam();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        key: scaffoldState,
         appBar: AppBar(
-          title: const Text('Snackbar example app'),
+          title: const Text('Clock example app'),
         ),
-        body: Container(
-            padding: const EdgeInsets.all(10.0),
-            child: ElevatedButton(
-              onPressed: () {
-                showSnakeBar(scaffoldState, 'Muncul Snackbar');
-              },
-              child: const Text("Tampilkan"),
-            )),
+        body: Center(
+          child: Text(
+            jam,
+            style: const TextStyle(fontSize: 40),
+          ),
+        ),
       ),
     );
   }
