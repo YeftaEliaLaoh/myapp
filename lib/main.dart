@@ -17,15 +17,13 @@ class Halaman extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Progress Dialog"),
       ),
-      body: Container(
-        width: 200,
-        height: 200,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100.0),
-          image: const DecorationImage(
-            image: AssetImage('image01.jpg'),
-            fit: BoxFit.cover,
-          ),
+      body: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Image.asset(
+          "image01.jpg",
+          height: 200,
+          width: 200,
+          fit: BoxFit.cover,
         ),
       ),
     );
