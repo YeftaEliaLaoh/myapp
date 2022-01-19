@@ -1,4 +1,4 @@
-import 'views/halamanutama.dart';
+import 'halamandate.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,6 +13,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'MY App', home: HalamanInput());
+    return const MaterialApp(title: 'MY App', home: HalamanDate());
   }
 }
